@@ -8,13 +8,9 @@ import org.openspaces.core.space.UrlSpaceConfigurer;
 import org.openspaces.remoting.ExecutorRemotingProxyConfigurer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import se.joshua.party.runner.domain.CreatePlayerRequest;
-import se.joshua.party.runner.domain.Player;
 import se.joshua.party.service.PlayerService;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 
 /**
@@ -48,14 +44,6 @@ public class TestOfService {
                 .withEndDate(LocalDate.now())
                 .build());
 
-
-        Set<Player> players = new HashSet<>();
-
-        playerService.getPlayers().forEach(players::add);
-
-        players.forEach(System.out::println);
-
-        //   Player player =(Player) playerService.getPlayerByUserName("we");
     }
 
 

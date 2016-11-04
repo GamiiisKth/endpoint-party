@@ -19,6 +19,64 @@
         <module>endpoint-party-test</module>
     </modules>
 
+    <properties>
+        <sugar.dependency.version>0.0.1-SNAPSHOT</sugar.dependency.version>
+        <sugar.common.version>0.0.1-SNAPSHOT</sugar.common.version>
+        <sugar.backend.party.version>0.0.1-SNAPSHOT</sugar.backend.party.version>
+    </properties>
+
+<dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>common-util</artifactId>
+            <version>${sugar.common.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>se.joshua</groupId>
+            <artifactId>backend-component-party-domain</artifactId>
+            <version>${sugar.backend.party.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>swagger-dependency-management-2.5.0</artifactId>
+            <version>${sugar.dependency.version}</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>
+
+    </dependencies>
+</dependencyManagement>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>platform-provided-dependencies-2.0.0</artifactId>
+            <version>${sugar.dependency.version}</version>
+            <scope>provided</scope>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>platform-provided-endpoint-dependencies-2.0.0</artifactId>
+            <version>${sugar.dependency.version}</version>
+            <scope>provided</scope>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>platform-required-endpoint-dependencies-2.0.0</artifactId>
+            <version>${sugar.dependency.version}</version>
+            <scope>compile</scope>
+            <type>pom</type>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <pluginManagement>

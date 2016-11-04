@@ -10,9 +10,31 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>se.joshua</groupId>
     <artifactId>endpoint-party-model-mapper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    
+
+
+        <dependencies>
+            <!--
+            Endpoint dependencies
+            -->
+            <dependency>
+                <groupId>se.joshua</groupId>
+                <artifactId>endpoint-party-model</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!--
+            Backend dependencies
+            -->
+            <dependency>
+                <groupId>se.joshua</groupId>
+                <artifactId>backend-component-party-domain</artifactId>
+            </dependency>
+
+
+
+        </dependencies>
+
 </project>
