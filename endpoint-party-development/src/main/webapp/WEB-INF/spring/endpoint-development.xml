@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:os-core="http://www.openspaces.org/schema/core"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.openspaces.org/schema/core http://www.openspaces.org/schema/9.7/core/openspaces-core.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <import resource="classpath*:endpoint-party-component-client.xml"/>
+    <import resource="classpath*:party-local-configuration.xml"/>
+    <import resource="classpath*:request-http-servlet-filter.xml"/>
+
+   <!-- <import resource="classpath*:request-spring.xml"/>
+    <import resource="classpath*:request-http-servlet-filter.xml"/>
+    <import resource="classpath*:request-serializer-jackson.xml"/>-->
+
+    <!--
+        This section sets up an in-memory space that all the imported component will be using
+    -->
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <os-core:distributed-tx-manager id="transactionManager"/>
+    <os-core:embedded-space id="developmentSpace"
+                            name="developmentSpace"
+                            lookup-locators="127.0.0.1:4174"/>
+    <os-core:giga-space id="developmentGigaSpace"
+                        space="developmentSpace"
+                        tx-manager="transactionManager"/>
+
+
+    <alias name="developmentGigaSpace" alias="partyGigaspace"/>
+</beans>

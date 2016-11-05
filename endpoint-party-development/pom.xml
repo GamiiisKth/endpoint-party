@@ -10,9 +10,147 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>se.joshua</groupId>
     <artifactId>endpoint-party-development</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    
+    <packaging>war</packaging>
+
+    <description>
+        A WAR project used to run everything in-memory
+    </description>
+
+    <properties>
+        <!--
+            Default properties defined by the parent pom for the jetty plugin.
+        -->
+        <jetty.port>8081</jetty.port>
+        <jetty.stopPort>1000</jetty.stopPort>
+        <jetty.stopKey>foo</jetty.stopKey>
+        <jetty.daemon>false</jetty.daemon>
+    </properties>
+
+
+    <dependencies>
+
+        <!--
+        Endpoint dependencies
+        -->
+
+        <dependency>
+            <groupId>se.joshua</groupId>
+            <artifactId>endpoint-party-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>se.joshua</groupId>
+            <artifactId>backend-party-configuration</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>se.joshua</groupId>
+            <artifactId>backend-component-party-service-impl</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>se.joshua</groupId>
+            <artifactId>backend-component-party-dao-impl</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+
+        <!--
+        Sugar common dependencies
+        -->
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>common-gigaspaces</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>common-swagger</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+        <!-- Request dependencies -->
+     <!--   <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>request-http</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>request-serializer-jackson</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>request-gs</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.so4it.sugar</groupId>
+            <artifactId>request-spring</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+-->
+       <!-- <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+-->
+    </dependencies>
+
+    <build>
+        <finalName>endpoint</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <daemon>${jetty.daemon}</daemon>
+                    <webAppConfig>
+                        <contextPath>/</contextPath>
+                    </webAppConfig>
+                    <stopKey>${jetty.stopKey}</stopKey>
+                    <stopPort>${jetty.stopPort}</stopPort>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
 </project>

@@ -33,8 +33,6 @@
                 <artifactId>backend-component-party-domain</artifactId>
             </dependency>
 
-
-
         </dependencies>
 
 </project>

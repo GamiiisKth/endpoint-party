@@ -40,10 +40,10 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 </project>
